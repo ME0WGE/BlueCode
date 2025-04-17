@@ -1,5 +1,12 @@
 /**
-Classe Joueur 
+|====================================================================|
+|                                                                    |
+|                            Classes                                 |
+|                                                                    |
+|====================================================================|
+ */
+/**
+ * Classe Joueur 
 ●  nom 
 ●  numéro (ex : 10) 
 ●  position : "attaquant", "défenseur" ou "gardien" 
@@ -22,20 +29,21 @@ tir(gardien)
 ●  Même logique que le dribble, mais contre un gardien 
 ●  Si réussi : but, +1 goal dans le palmarès de l'équipe 
 ●  Sinon : balle au gardien 
-●  Fatigue +5
+●  Fatigue +5 
  */
+//                      Player
 export class Player {
   constructor(
-    nom = String,
-    nb = Number,
-    attack = Number,
-    defense = Number,
-    speed = Number,
-    reflex = Number,
+    name = "String",
+    nb = 0,
+    attack = 0,
+    defense = 0,
+    speed = 0,
+    reflex = 0,
     foot = [],
-    fatigue = Number
+    fatigue = 0
   ) {
-    this.nom = nom;
+    this.name = name;
     this.nb = nb;
     this.attack = attack;
     this.defense = defense;
@@ -58,5 +66,38 @@ export class Player {
     // this.fatigue += 5;
     //}
   };
-  shoot = (goalkeeper) => {};
+  shoot = (goalkeeper) => {
+    // if (player.hasBall) {
+    let attackGoal = [(this.attack * speed) / 100] - this.fatigue;
+    // VS
+    let defendGoal = [(this.defense * this.reflex) / 100] - this.fatigue;
+    // }
+    // if (attackGoal > defenseGoal) {
+    // score += 1;
+    // } else {
+    // opponent.hasBall === true;
+    // this.fatigue += 5;
+    //}
+  };
+}
+/**
+ Classe Équipe 
+●  nom 
+●  couleur 
+●  joueurs (array vide) 
+●  palmarès (array vide) → tableau d’objets : {numeroJoueur: XX, but: XX} 
+●  Chaque but modifie l'objet du joueur concerné (ex : {Joueur: 9, but: 2}) 
+Composition : 
+●  2 attaquants 
+●  2 défenseurs 
+●  1 gardien
+ */
+//                      Team
+export class Team {
+  constructor(name = "", colour = "", players = []) {
+    this.name = name;
+    this.colour = colour;
+    this.players = players;
+    this.palmares = [{ playerNb: 0, goal: 0 }];
+  }
 }
