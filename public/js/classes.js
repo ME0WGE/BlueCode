@@ -55,31 +55,31 @@ export class Player {
     this.hasBall = hasBall;
   }
   dribble = (opponent) => {
-    // if (player.hasBall) {
-    let dribbleAttack = [(this.attack * speed) / 100] - this.fatigue;
-    // VS
-    let dribbleDefense = [(this.defense * this.reflex) / 100] - this.fatigue;
-    // }
-    // if (dribbleAttack > dribbleDefense) {
-    // dribble === true;
-    // } else {
-    // dribble === false;
-    // opponent.hasBall === true;
-    // this.fatigue += 5;
-    //}
+    if (this.hasBall) {
+      let dribbleAttack = [(this.attack * speed) / 100] - this.fatigue;
+      // VS
+      let dribbleDefense = [(this.defense * this.reflex) / 100] - this.fatigue;
+    }
+    if (dribbleAttack > dribbleDefense) {
+      console.log(`Successful dribble!`);
+    } else {
+      console.log(`Unsuccesful dribble!`);
+      opponent.hasBall = true;
+      this.fatigue += 5;
+    }
   };
   shoot = (goalkeeper) => {
-    // if (player.hasBall) {
-    let attackGoal = [(this.attack * speed) / 100] - this.fatigue;
-    // VS
-    let defendGoal = [(this.defense * this.reflex) / 100] - this.fatigue;
-    // }
-    // if (attackGoal > defenseGoal) {
-    // score += 1;
-    // } else {
-    // opponent.hasBall === true;
-    // this.fatigue += 5;
-    //}
+    if (this.hasBall) {
+      let attackGoal = [(this.attack * speed) / 100] - this.fatigue;
+      // VS
+      let defendGoal = [(this.defense * this.reflex) / 100] - this.fatigue;
+    }
+    if (attackGoal > defensdGoal) {
+      Team.score += 1;
+    } else {
+      goalkeeper.hasBall = true;
+      this.fatigue += 5;
+    }
   };
 }
 /**
@@ -96,10 +96,11 @@ Composition :
  */
 //                      Team
 export class Team {
-  constructor(name = "", colour = "", players = []) {
+  constructor(name = "", colour = "", players = [], score = 0) {
     this.name = name;
     this.colour = colour;
     this.players = players;
     this.palmares = [{ playerNb: 0, goal: 0 }];
+    this.score = 0;
   }
 }
