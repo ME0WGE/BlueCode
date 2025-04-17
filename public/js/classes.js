@@ -36,12 +36,13 @@ export class Player {
   constructor(
     name = "String",
     nb = 0,
-    attack = 0,
-    defense = 0,
-    speed = 0,
-    reflex = 0,
+    attack = 0, // Values between 0 - 60 (60 - 90 if attacker)
+    defense = 0, // Values between 0 - 60 (60 - 90 if defender)
+    speed = 0, // Values between 0 - 60 (60 - 90 if attacker)
+    reflex = 0, // Values between 0 - 60 (60 - 90 if goalkeeper)
     foot = [],
-    fatigue = 0
+    fatigue = 0,
+    hasBall = true
   ) {
     this.name = name;
     this.nb = nb;
@@ -51,6 +52,7 @@ export class Player {
     this.reflex = reflex;
     this.foot = foot;
     this.fatigue = fatigue;
+    this.hasBall = hasBall;
   }
   dribble = (opponent) => {
     // if (player.hasBall) {
