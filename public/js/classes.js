@@ -34,5 +34,29 @@ export class Player {
     reflex = Number,
     foot = [],
     fatigue = Number
-  ) {}
+  ) {
+    this.nom = nom;
+    this.nb = nb;
+    this.attack = attack;
+    this.defense = defense;
+    this.speed = speed;
+    this.reflex = reflex;
+    this.foot = foot;
+    this.fatigue = fatigue;
+  }
+  dribble = (opponent) => {
+    // if (player.hasBall) {
+    let dribbleAttack = [(this.attack * speed) / 100] - this.fatigue;
+    // VS
+    let dribbleDefense = [(this.defense * this.reflex) / 100] - this.fatigue;
+    // }
+    // if (dribbleAttack > dribbleDefense) {
+    // dribble === true;
+    // } else {
+    // dribble === false;
+    // opponent.hasBall === true;
+    // this.fatigue += 5;
+    //}
+  };
+  shoot = (goalkeeper) => {};
 }
